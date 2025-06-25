@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://cknh0kcn64c7q"]
+
+[ext_resource type="PackedScene" uid="uid://bxcejwyciigrh" path="res://character_body_2d.tscn" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://dce37c5jlsloc" path="res://icon.svg" id="2_epypp"]
+[ext_resource type="PackedScene" uid="uid://n3ew5ctci2ku" path="res://area_2d.tscn" id="3_epypp"]
+[ext_resource type="PackedScene" uid="uid://ondbeasjjoda" path="res://sui.tscn" id="4_0hol4"]
+[ext_resource type="FontFile" uid="uid://chvrv4mlhjgvj" path="res://fonts/PixelOperator8.ttf" id="5_kdubu"]
+[ext_resource type="Script" uid="uid://ciqfkh758qhtr" path="res://label.gd" id="5_q6r6c"]
+[ext_resource type="AudioStream" uid="uid://csgkcmp8u5igk" path="res://sounds/coin.wav" id="7_d21ai"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0hol4"]
+distance = -12.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_0e48y")]
+position = Vector2(1, -1)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(-1, 1)
+zoom = Vector2(4, 4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(35.5, 77)
+scale = Vector2(4.50781, 1)
+texture = ExtResource("2_epypp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_0hol4")
+
+[node name="Area2D" parent="StaticBody2D" instance=ExtResource("3_epypp")]
+position = Vector2(-98, 1)
+
+[node name="Area2D2" parent="StaticBody2D" instance=ExtResource("3_epypp")]
+position = Vector2(85, -21)
+
+[node name="Area2D3" parent="StaticBody2D" instance=ExtResource("3_epypp")]
+position = Vector2(138, -20)
+
+[node name="sui" parent="StaticBody2D" instance=ExtResource("4_0hol4")]
+position = Vector2(-74, -5)
+
+[node name="sui2" parent="StaticBody2D" instance=ExtResource("4_0hol4")]
+position = Vector2(65, -3)
+
+[node name="sui3" parent="StaticBody2D" instance=ExtResource("4_0hol4")]
+position = Vector2(126, -3)
+
+[node name="Area2D4" parent="StaticBody2D" instance=ExtResource("3_epypp")]
+position = Vector2(267, 6)
+
+[node name="sui4" parent="StaticBody2D" instance=ExtResource("4_0hol4")]
+position = Vector2(241, -3)
+
+[node name="Area2D5" parent="StaticBody2D" instance=ExtResource("3_epypp")]
+position = Vector2(201, -24)
+
+[node name="sui5" parent="StaticBody2D" instance=ExtResource("4_0hol4")]
+position = Vector2(199, -1)
+
+[node name="sui6" parent="StaticBody2D" instance=ExtResource("4_0hol4")]
+position = Vector2(-158, -3)
+
+[node name="sui7" parent="StaticBody2D" instance=ExtResource("4_0hol4")]
+position = Vector2(-155, -64)
+
+[node name="Area2D6" parent="StaticBody2D" instance=ExtResource("3_epypp")]
+position = Vector2(-157, -27)
+
+[node name="Area2D7" parent="StaticBody2D" instance=ExtResource("3_epypp")]
+position = Vector2(-220, 7)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -45.0
+offset_top = -48.0
+offset_right = 57.0
+offset_bottom = -25.0
+theme_override_fonts/font = ExtResource("5_kdubu")
+theme_override_font_sizes/font_size = 16
+text = "you win!"
+script = ExtResource("5_q6r6c")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_d21ai")
